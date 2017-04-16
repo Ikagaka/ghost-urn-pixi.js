@@ -11,7 +11,7 @@ import {
 
 ReactDOM.render(
     (
-        <Stage width={500} height={500}>
+        <Stage width={500} height={500} {...{transparent: true, backgroundColor: 0x000000} as any}>
             <NamedManager>
                 <Named>
                     <Scope>
