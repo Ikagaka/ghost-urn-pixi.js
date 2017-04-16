@@ -73,7 +73,9 @@ class TextBound {
     }
 
     resetTextStyle() {
-        this.textStyleOptions = {};
+        this.textStyleOptions = {
+            fontSize: 12,
+        };
         this.textStyle = new PIXI.TextStyle(this.textStyleOptions);
     }
 
