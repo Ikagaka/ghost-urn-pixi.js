@@ -12,3 +12,4 @@ npm-debug.log
 !.gitmodules
 !.npmignore
 !.travis.yml
+/dist
