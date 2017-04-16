@@ -55,6 +55,16 @@ class TextBound {
         this.y += height * rate;
     }
 
+    locationTo(x: string, y: string) {
+        console.log(this.x, this.y);
+        const {height} = this.getTextMetrics(".");
+        const toX = this.getAbsoluteLocation(this.getLocationParam(x), this.x, height);
+        const toY = this.getAbsoluteLocation(this.getLocationParam(y), this.y, height);
+        this.x = toX;
+        this.y = toY;
+        console.log(this.x, this.y);
+    }
+
     updateTextStyle(textStyleOptions: PIXI.TextStyleOptions) {
         for (const name of Object.keys(textStyleOptions) as Array<keyof PIXI.TextStyleOptions>) {
             this.textStyleOptions[name] = textStyleOptions[name];
@@ -65,6 +75,27 @@ class TextBound {
     resetTextStyle() {
         this.textStyleOptions = {};
         this.textStyle = new PIXI.TextStyle(this.textStyleOptions);
+    }
+
+    private getLocationParam(param: string) {
+        if (!param || !param.length) return {relative: true, value: 0, unit: ""};
+        const result = /^(@)?(-?\d*\.?\d*e?\d*)(em|%)?$/.exec(param);
+        if (!result) return {relative: true, value: 0, unit: ""};
+        const relative = Boolean(result[1]);
+        const value = Number(result[2]);
+        const unit = String(result[3]);
+        return {relative, value, unit};
+    }
+
+    private getAbsoluteLocation(param: {relative: boolean, value: number, unit: string}, origin: number, em: number) {
+        const basePosition = param.relative ? origin : 0;
+        if (param.unit === "em") {
+            return basePosition + param.value * em;
+        } else if (param.unit === "%") {
+            return basePosition + param.value * em / 100;
+        } else {
+            return basePosition + param.value;
+        }
     }
 }
 
@@ -106,6 +137,7 @@ export const BalloonContent = (props: Props & {width: number, height: number, sc
         } else if (token instanceof SakuraScriptToken.PercentLineBreak) {
             textBound.lineBreak(token.percent / 100);
         } else if (token instanceof SakuraScriptToken.Location) {
+            textBound.locationTo(token.x, token.y);
         } else if (token instanceof SakuraScriptToken.Image) {
         } else if (token instanceof SakuraScriptToken.InlineImage) {
         }

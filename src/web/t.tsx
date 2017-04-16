@@ -17,7 +17,9 @@ ReactDOM.render(
                     <Scope>
                         <ScopeBalloon x={100} y={50}>
                             <BalloonSurface image="foo.png" offsetLeft={10} offsetTop={10} scrollOffset={9}>
-                                \f[height,12pt]a\f[height,8pt]a\f[height,2em]a\f[color,0,0,128]aa\\d\nq\f[name,Meiryo]aji\f[bold,1]sjan
+                                \f[height,12pt]a\f[height,8pt]a\f[height,2em]a\f[color,0,0,128]aa\\d\n
+                                q\f[name,Meiryo]aji\f[bold,1]sjan
+                                \_l[@-1em,15]あいうえおあいうえおあいうえおあいうえおあいうえお
                             </BalloonSurface>
                         </ScopeBalloon>
                     </Scope>
