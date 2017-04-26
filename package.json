@@ -14,13 +14,12 @@
     "web"
   ],
   "scripts": {
-    "dist": "npm run node && npm run web",
-    "node": "rm -rf dist && cross-env NODE_ENV=production tsc",
-    "web": "rm -rf web && cross-env NODE_ENV=production webpack --config ./webpack.config.web.js",
-    "lint": "npm run eslint && npm run tslint",
-    "eslint": "eslint *.js src test",
-    "prepublish": "echo npm run dist",
-    "tslint": "tslint  tslint *.ts src/**/*.ts test/**/*.ts",
+    "dist": "rm -rf dist && cross-env NODE_ENV=production tsc",
+    "build:example": "npm run dist && browserify dist/example/example1.js -o example/example1.js",
+    "serve:example": "npm run build:example && hs example",
+    "lint": "npm run tslint",
+    "prepublish": "npm run dist",
+    "tslint": "tslint  tslint *.ts src/**/*.ts src/**/*.tsx",
     "test": "npm run test-node && npm run test-web",
     "test-node": "cross-env NODE_ENV=test nyc mocha",
     "test-web": "cross-env NODE_ENV=test karma start --single-run",
@@ -28,20 +27,21 @@
     "doc": "typedoc --mode modules --out doc --readme Readme.md --name \"API Document\" --disableOutputCheck --includeDeclarations --excludeNotExported src && cd doc && git status && cd .."
   },
   "dependencies": {
-    "pixi.js": "^4.4.1",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2",
-    "react-pixi": "Narazaka/react-pixi",
+    "pixi.js": "^4.5.1",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-pixi": "Izzimach/react-pixi",
     "sakurascript": "^1.1.0"
   },
   "devDependencies": {
-    "@types/node": "^7.0.8",
-    "@types/pixi.js": "^4.4.0",
-    "@types/react": "^15.0.16",
-    "@types/react-dom": "^0.14.23",
-    "cross-env": "^3.1.4",
-    "tslint": "^4.4.2",
-    "typescript": "^2.2.1"
+    "@types/node": "^7.0.13",
+    "@types/pixi.js": "^4.4.3",
+    "@types/react": "^15.0.23",
+    "@types/react-dom": "^15.5.0",
+    "browserify": "^14.3.0",
+    "cross-env": "^4.0.0",
+    "tslint": "^5.1.0",
+    "typescript": "^2.2.2"
   },
   "url": "https://github.com/Ikagaka/ghost-urn.js",
   "author": {
