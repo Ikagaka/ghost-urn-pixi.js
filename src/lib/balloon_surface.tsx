@@ -10,9 +10,6 @@ import {
 import {BalloonContent} from "./balloon_content";
 import {Props} from "./renderer_base";
 
-(window as any).React = React;
-(window as any).PIXI = PIXI;
-
 export interface BalloonSurfaceProps extends Props {
     image?: string;
     texture?: PIXI.Texture;
