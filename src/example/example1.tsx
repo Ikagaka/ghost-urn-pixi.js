@@ -20,10 +20,10 @@ ReactDOM.render(
                 <Named>
                     <Scope>
                         <ScopeShell>
-                            <ShellSurface image="foo.png" />
+                            <ShellSurface image="surface11.png" />
                         </ScopeShell>
                         <ScopeBalloon x={100} y={50}>
-                            <BalloonSurface image="foo.png">
+                            <BalloonSurface image="balloonk0.png">
                                 <BalloonContent
                                     offsetLeft={10} offsetTop={10} offsetRight={10} offsetBottom={10} scrollOffset={7}
                                 >
