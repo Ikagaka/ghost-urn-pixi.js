@@ -10,7 +10,7 @@ import {HasTextureBase, HasTextureProps, HasTextureStates} from "./has_texture_b
 /**
  * バルーンのsurface
  *
- * 子要素は<BalloonContent>です。
+ * 子要素は<BalloonContent>などです。
  */
 export class BalloonSurface extends HasTextureBase<HasTextureProps, HasTextureStates> {
     render() {
