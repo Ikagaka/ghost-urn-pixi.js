@@ -6,6 +6,7 @@
         "member-access": false,
         "interface-name": [true, "never-prefix"],
         "curly": false,
-        "variable-name": [true, "check-format", "allow-leading-underscore", "allow-pascal-case"]
+        "variable-name": [true, "check-format", "allow-leading-underscore", "allow-pascal-case"],
+        "object-literal-sort-keys": false
     }
 }
