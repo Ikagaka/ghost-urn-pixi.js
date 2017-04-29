@@ -8,8 +8,7 @@ uniform sampler2D texture;
 void main(void) {
     vec4 transparentColor = texture2D(texture, vec2(0.0, 0.0));
     vec4 currentColor = texture2D(texture, vTextureCoord);
-    float colorDistance = distance(transparentColor, currentColor);
-    gl_FragColor = colorDistance < 0.00000012 ? vec4(0.0, 0.0, 0.0, 0.0) : currentColor;
+    gl_FragColor = all(equal(transparentColor, currentColor)) ? vec4(0.0, 0.0, 0.0, 0.0) : currentColor;
 }
 `;
 
