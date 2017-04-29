@@ -10,7 +10,7 @@ import {HasTextureBase, HasTextureProps, HasTextureStates} from "./has_texture_b
 export class ShellSurface extends HasTextureBase<HasTextureProps, HasTextureStates> {
     render() {
         if (!this.state.texture.baseTexture.hasLoaded) return <DisplayObjectContainer />;
-        const filters = [new TopTransparentColorFilter(this.state.texture.width, this.state.texture.height)];
+        const filters = [new TopTransparentColorFilter()];
         return (
             <DisplayObjectContainer>
                 <Sprite texture={this.state.texture} filters={filters}>
