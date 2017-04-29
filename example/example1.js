@@ -137,7 +137,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var PIXI = require("pixi.js");
-var fragment = "\nvarying vec2 vTextureCoord;\n\nuniform sampler2D texture;\n\nvoid main(void) {\n    vec4 transparentColor = texture2D(texture, vec2(0.0, 0.0));\n    vec4 currentColor = texture2D(texture, vTextureCoord);\n    float colorDistance = distance(transparentColor, currentColor);\n    gl_FragColor = colorDistance < 0.00000012 ? vec4(0.0, 0.0, 0.0, 0.0) : currentColor;\n}\n";
+var fragment = "\nvarying vec2 vTextureCoord;\n\nuniform sampler2D texture;\n\nvoid main(void) {\n    vec4 transparentColor = texture2D(texture, vec2(0.0, 0.0));\n    vec4 currentColor = texture2D(texture, vTextureCoord);\n    gl_FragColor = all(equal(transparentColor, currentColor)) ? vec4(0.0, 0.0, 0.0, 0.0) : currentColor;\n}\n";
 var TopTransparentColorFilter = (function (_super) {
     __extends(TopTransparentColorFilter, _super);
     function TopTransparentColorFilter() {
