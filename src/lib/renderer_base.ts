@@ -6,3 +6,8 @@ export interface HasPositionProps extends Props {
     x?: number;
     y?: number;
 }
+
+export interface HasSizeProps extends Props {
+    width?: number;
+    height?: number;
+}

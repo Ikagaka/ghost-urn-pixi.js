@@ -4,3 +4,4 @@ export * from "./scope";
 export * from "./scope_balloon";
 export * from "./balloon_surface";
 export * from "./balloon_content";
+export * from "./sakura_script_content";

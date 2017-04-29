@@ -2,22 +2,15 @@ import * as PIXI from "pixi.js";
 import * as React from "react";
 import "react-dom";
 import {
-    CustomPIXIComponent,
-    CustomPixiComponentClassFactory,
     DisplayObjectContainer,
     Sprite,
 } from "react-pixi";
-import {BalloonContent} from "./balloon_content";
+import {BalloonContent, BalloonContentProps} from "./balloon_content";
 import {Props} from "./renderer_base";
 
 export interface BalloonSurfaceProps extends Props {
     image?: string;
     texture?: PIXI.Texture;
-    offsetLeft?: number;
-    offsetTop?: number;
-    offsetRight?: number;
-    offsetBottom?: number;
-    scrollOffset?: number;
 }
 
 export interface BalloonSurfaceStates {
@@ -36,32 +29,21 @@ export class BalloonSurface extends React.Component<BalloonSurfaceProps, Balloon
 
     render() {
         if (!this.state.texture.baseTexture.hasLoaded) return <DisplayObjectContainer />;
-        const width = this.state.texture.width - (this.props.offsetLeft || 0) - (this.props.offsetRight || 0);
-        const height = this.state.texture.width - (this.props.offsetTop || 0) - (this.props.offsetBottom || 0);
-        const mask = new PIXI.Graphics();
-        mask.beginFill(0x000000, 0);
-        mask.drawRect(this.props.offsetLeft || 0, this.props.offsetTop || 0, width, height);
-        mask.endFill();
-        const maskComponent = <CustomGraphics {...{graphics: mask}} />;
+        const children = React.Children.map(this.props.children, (child) => {
+            if (child instanceof Object && (child as any).type === BalloonContent) {
+                return React.cloneElement(child as React.DOMElement<BalloonContentProps, Element>, {
+                    parentWidth: this.state.texture.width, parentHeight: this.state.texture.height,
+                });
+            } else {
+                return child;
+            }
+        });
         return (
             <DisplayObjectContainer>
                 <Sprite texture={this.state.texture}>
-                    <DisplayObjectContainer
-                        x={this.props.offsetLeft} y={this.props.offsetTop} width={width} height={height} mask={mask}
-                    >
-                        <BalloonContent width={width} height={height} scrollOffset={this.props.scrollOffset}>
-                            {this.props.children}
-                        </BalloonContent>
-                    </DisplayObjectContainer>
+                    {children}
                 </Sprite>
-                {maskComponent}
             </DisplayObjectContainer>
         );
     }
-};
-
-export const CustomGraphics: CustomPixiComponentClassFactory<{graphics: PIXI.Graphics}, PIXI.Graphics> =
-    CustomPIXIComponent<{graphics: PIXI.Graphics}, PIXI.Graphics>({
-    customDisplayObject(props) { return props.graphics; },
-    customApplyProps() { return; },
-});
+}
