@@ -1,17 +1,16 @@
 {
-  "name": "ghost-urn-pixi",
+  "name": "react-ukagaka-shell-pixi",
   "version": "1.0.0",
-  "description": "Ukagaka Ghost \"Shell\" implement",
+  "description": "Ukagaka Ghost \"Shell\" renderer using react-pixi",
   "keywords": [
     "ukagaka",
     "ikagaka",
     "shell"
   ],
-  "main": "./dist/lib/ghost-urn-pixi.js",
-  "types": "./dist/lib/ghost-urn-pixi.d.ts",
+  "main": "./dist/lib/index.js",
+  "types": "./dist/lib/index.d.ts",
   "files": [
-    "dist",
-    "web"
+    "dist"
   ],
   "scripts": {
     "dist": "rm -rf dist && cross-env NODE_ENV=production tsc",
@@ -43,7 +42,7 @@
     "tslint": "^5.1.0",
     "typescript": "^2.3.2"
   },
-  "url": "https://github.com/Ikagaka/ghost-urn.js",
+  "url": "https://github.com/Ikagaka/react-ukagaka-shell-pixi.js",
   "author": {
     "name": "Narazaka",
     "email": "info@narazaka.net",
@@ -52,6 +51,6 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Ikagaka/ghost-urn.js.git"
+    "url": "https://github.com/Ikagaka/react-ukagaka-shell-pixi.js.git"
   }
 }
