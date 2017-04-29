@@ -104,6 +104,11 @@ class TextBound {
 
 export type SakuraScriptContentProps = HasSizeProps;
 
+/**
+ * バルーンの表示内容さくらスクリプト
+ *
+ * 子要素はさくらスクリプト文字列かSakuraScriptTokenの配列です。
+ */
 export function SakuraScriptContent(props: HasSizeProps) {
     if (!props.width || !props.height) return <DisplayObjectContainer />;
     const children: Array<React.ReactElement<any>> = [];

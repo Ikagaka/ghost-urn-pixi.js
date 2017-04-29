@@ -8,13 +8,21 @@ import {
 import {Props} from "./renderer_base";
 import {SakuraScriptContent, SakuraScriptContentProps} from "./sakura_script_content";
 
+/** バルーンの表示内容プロパティ */
 export interface BalloonContentProps extends Props {
     offsetLeft?: number;
     offsetTop?: number;
     offsetRight?: number;
     offsetBottom?: number;
+    /**
+     * スクロールオフセット
+     *
+     * 基本的には負値を指定して上にスクロールさせたような見た目にする
+     */
     scrollOffset?: number;
+    /** 親コンポーネントの幅 */
     parentWidth?: number;
+    /** 親コンポーネントの高さ */
     parentHeight?: number;
 }
 
@@ -26,6 +34,11 @@ function makeMask(offsetLeft: number, offsetTop: number, width: number, height: 
     return mask;
 }
 
+/**
+ * バルーンの表示内容
+ *
+ * 子要素は<SakuraScriptContent>です。
+ */
 export function BalloonContent(props: BalloonContentProps) {
     const parentWidth = props.parentWidth;
     const parentHeight = props.parentHeight;

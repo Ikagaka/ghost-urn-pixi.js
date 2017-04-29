@@ -7,6 +7,11 @@ import {
 import {BalloonContent, BalloonContentProps} from "./balloon_content";
 import {HasTextureBase, HasTextureProps, HasTextureStates} from "./has_texture_base";
 
+/**
+ * バルーンのsurface
+ *
+ * 子要素は<BalloonContent>です。
+ */
 export class BalloonSurface extends HasTextureBase<HasTextureProps, HasTextureStates> {
     render() {
         if (!this.state.texture.baseTexture.hasLoaded) return <DisplayObjectContainer />;
