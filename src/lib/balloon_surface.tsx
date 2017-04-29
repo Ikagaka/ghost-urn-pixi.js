@@ -1,4 +1,3 @@
-import * as PIXI from "pixi.js";
 import * as React from "react";
 import "react-dom";
 import {
@@ -6,27 +5,9 @@ import {
     Sprite,
 } from "react-pixi";
 import {BalloonContent, BalloonContentProps} from "./balloon_content";
-import {Props} from "./renderer_base";
+import {HasTextureBase, HasTextureProps, HasTextureStates} from "./has_texture_base";
 
-export interface BalloonSurfaceProps extends Props {
-    image?: string;
-    texture?: PIXI.Texture;
-}
-
-export interface BalloonSurfaceStates {
-    texture: PIXI.Texture;
-}
-
-export class BalloonSurface extends React.Component<BalloonSurfaceProps, BalloonSurfaceStates> {
-    constructor(props: BalloonSurfaceProps) {
-        super(props);
-        const texture = this.props.image ? PIXI.Texture.from(this.props.image) : this.props.texture as PIXI.Texture;
-        texture.baseTexture.on("loaded", () =>
-            this.setState({texture}),
-        );
-        this.state = {texture};
-    }
-
+export class BalloonSurface extends HasTextureBase<HasTextureProps, HasTextureStates> {
     render() {
         if (!this.state.texture.baseTexture.hasLoaded) return <DisplayObjectContainer />;
         const children = React.Children.map(this.props.children, (child) => {
