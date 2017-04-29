@@ -9,6 +9,8 @@ import {
     SakuraScriptContent,
     Scope,
     ScopeBalloon,
+    ScopeShell,
+    ShellSurface,
 } from "../lib";
 
 ReactDOM.render(
@@ -17,6 +19,9 @@ ReactDOM.render(
             <NamedManager>
                 <Named>
                     <Scope>
+                        <ScopeShell>
+                            <ShellSurface image="foo.png" />
+                        </ScopeShell>
                         <ScopeBalloon x={100} y={50}>
                             <BalloonSurface image="foo.png">
                                 <BalloonContent
