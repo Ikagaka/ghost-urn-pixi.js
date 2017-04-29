@@ -20,12 +20,12 @@ ReactDOM.render(
                 <Named>
                     <Scope>
                         <ScopeShell>
-                            <ShellSurface image="surface11.png" />
+                            <ShellSurface image="surface11.png" alphaImage="surface11.pna" />
                         </ScopeShell>
                         <ScopeBalloon x={100} y={50}>
                             <BalloonSurface image="balloonk0.png">
                                 <BalloonContent
-                                    offsetLeft={10} offsetTop={10} offsetRight={10} offsetBottom={10} scrollOffset={7}
+                                    offsetLeft={20} offsetTop={10} offsetRight={20} offsetBottom={10} scrollOffset={7}
                                 >
                                     <SakuraScriptContent>
                                         \f[height,12pt]a\f[height,8pt]a\f[height,2em]a\f[color,0,0,128]aa\\d\n
