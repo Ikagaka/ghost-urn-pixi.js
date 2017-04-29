@@ -137,13 +137,12 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var PIXI = require("pixi.js");
-var fragment = "\nvarying vec2 vTextureCoord;\n\nuniform sampler2D texture;\nuniform vec2 uResolution;\nuniform float width;\nuniform float height;\n\nvoid main(void) {\n    vec4 transparentColor = texture2D(texture, vec2(3.5 / width, 3.5 / height));\n    vec4 currentColor = texture2D(texture, vTextureCoord);\n    float colorDistance = distance(transparentColor, currentColor);\n    gl_FragColor = colorDistance < 0.00000012 ? vec4(0.0, 0.0, 0.0, 0.0) : currentColor;\n}\n";
+var fragment = "\nvarying vec2 vTextureCoord;\n\nuniform sampler2D texture;\n\nvoid main(void) {\n    vec4 transparentColor = texture2D(texture, vec2(0.0, 0.0));\n    vec4 currentColor = texture2D(texture, vTextureCoord);\n    float colorDistance = distance(transparentColor, currentColor);\n    gl_FragColor = colorDistance < 0.00000012 ? vec4(0.0, 0.0, 0.0, 0.0) : currentColor;\n}\n";
 var TopTransparentColorFilter = (function (_super) {
     __extends(TopTransparentColorFilter, _super);
-    function TopTransparentColorFilter(width, height) {
+    function TopTransparentColorFilter() {
         var _this = _super.call(this, undefined, fragment) || this;
-        _this.uniforms.width = width;
-        _this.uniforms.height = height;
+        _this.padding = 0;
         return _this;
     }
     return TopTransparentColorFilter;
@@ -442,7 +441,7 @@ var ShellSurface = (function (_super) {
     ShellSurface.prototype.render = function () {
         if (!this.state.texture.baseTexture.hasLoaded)
             return React.createElement(react_pixi_1.DisplayObjectContainer, null);
-        var filters = [new top_transparent_color_filter_1.TopTransparentColorFilter(this.state.texture.width, this.state.texture.height)];
+        var filters = [new top_transparent_color_filter_1.TopTransparentColorFilter()];
         return (React.createElement(react_pixi_1.DisplayObjectContainer, null,
             React.createElement(react_pixi_1.Sprite, { texture: this.state.texture, filters: filters }, this.props.children)));
     };
