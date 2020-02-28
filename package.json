@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "@types/node": "^7.0.14",
-    "@types/pixi.js": "^4.4.4",
+    "@types/pixi.js": "^5.0.0",
     "@types/react": "^15.0.23",
     "@types/react-dom": "^15.5.0",
     "browserify": "^14.3.0",
