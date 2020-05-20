@@ -40,7 +40,7 @@
     "browserify": "^14.3.0",
     "cross-env": "^4.0.0",
     "tslint": "^5.1.0",
-    "typescript": "^2.3.2"
+    "typescript": "^3.9.3"
   },
   "url": "https://github.com/Ikagaka/react-ukagaka-shell-pixi.js",
   "author": {
